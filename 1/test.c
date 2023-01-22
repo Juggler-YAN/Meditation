@@ -1,52 +1,37 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-#define LEN 10
-
-char * s_gets(char *, int);
-char * reverse(char *);
+#define LEN 100
 
 int main(void) {
-    char s[LEN];
-    while (s_gets(s, LEN)) {
-        puts(reverse(s));
+    char **pt;
+    char temp[LEN];
+    int n, len;
+
+    printf("How many words do you wish to enter? ");
+    scanf("%d", &n);
+    pt = (char **) malloc(n * sizeof(char *));
+    if (pt == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
     }
+    printf("Enter %d words now: \n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%99s", temp);
+        len = strlen(temp) + 1;
+        pt[i] = (char *)malloc(len * sizeof(char));
+        if (pt[i] == NULL) {
+            printf("Memory allocation failed!\n");
+            exit(EXIT_FAILURE);
+        }
+        strcpy(pt[i], temp);
+    }
+    printf("Here are your words:\n");
+    for (int i = 0; i < n; i++) {
+        puts(pt[i]);
+        free(pt[i]);
+    }
+    free(pt);
     return 0;
-}
-
-char * s_gets(char * st, int n) {
-    char * ret_val;
-    int i = 0;
-
-    ret_val = fgets(st, n, stdin);
-    if (ret_val) {
-        while (st[i] != '\n' && st[i] != '\0') {
-            i++;
-        }
-        if (st[i] == '\n') {
-            st[i] = '\0';
-        }
-        else {
-            while (getchar() != '\n') {
-                continue;
-            }
-        }
-    }
-    return ret_val;
-}
-
-char * reverse(char * s) {
-    char * start = s,
-         * end = s;
-    while (*end) {
-        end++;
-    }
-    end--;
-    while (start < end) {
-        char temp;
-        temp = *start;
-        *start = *end;
-        *end = temp;
-        start++, end--;
-    }
-    return s;
 }
