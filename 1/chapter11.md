@@ -378,19 +378,12 @@ char * string_in(char * s1, char * s2) {
 #define LEN 10
 
 char * s_gets(char *, int);
-char * string_in(char *, char *);
+char * reverse(char *);
 
 int main(void) {
-    char s1[LEN], s2[LEN];
-    while (s_gets(s1, LEN)) {
-        if (s_gets(s2, LEN)) {
-            if (string_in(s1, s2)) {
-                printf("%s is in %s\n", s2, s1);
-            }
-            else {
-                printf("Null Pointer!!!\n");
-            }
-        }
+    char s[LEN];
+    while (s_gets(s, LEN)) {
+        puts(reverse(s));
     }
     return 0;
 }
@@ -416,24 +409,21 @@ char * s_gets(char * st, int n) {
     return ret_val;
 }
 
-char * string_in(char * s1, char * s2) {
-    while (*s1) {
-        if (*s1 == *s2) {
-            char * temp1 = s1,
-                 * temp2 = s2;
-            while (*temp2) {
-                if (*temp1 != *temp2) {
-                    break;
-                }
-                temp1++, temp2++;
-            }
-            if (!(*temp2)) {
-                return s1;
-            }
-        }
-        s1++;
+char * reverse(char * s) {
+    char * start = s,
+         * end = s;
+    while (*end) {
+        end++;
     }
-    return NULL;
+    end--;
+    while (start < end) {
+        char temp;
+        temp = *start;
+        *start = *end;
+        *end = temp;
+        start++, end--;
+    }
+    return s;
 }
 ```
 
