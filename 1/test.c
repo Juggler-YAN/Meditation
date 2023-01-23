@@ -1,45 +1,42 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
+#include <stdarg.h>
 
-#define SIZE 3
+void show_array(const double ar[], int n);
+double * new_d_array(int n, ...);
 
-void transform(double [], double [], int, double (*)(double));
-double addOne(double);
-double minusOne(double);
-void print(double [], int);
+int main() {
+    double *p1;
+    double *p2;
 
-int main(void) {
-    double a[SIZE] = {1, 2, 3};
-    double b[SIZE] = {0, 0, 0};
-    print(b, SIZE);
-    transform(a, b, SIZE, sin);
-    print(b, SIZE);
-    transform(a, b, SIZE, cos);
-    print(b, SIZE);
-    transform(a, b, SIZE, addOne);
-    print(b, SIZE);
-    transform(a, b, SIZE, minusOne);
-    print(b, SIZE);
-	return 0;
+    p1 = new_d_array(5, 1.2, 2.3, 3.4, 4.5, 5.6);
+    p2 = new_d_array(4, 100.0, 20.00, 8.08, -1890.0);
+    show_array(p1, 5);
+    show_array(p2, 4);
+    free(p1);
+    free(p2);
+
+    return 0;
 }
 
-void transform(double a[], double b[], int n, double (*fun)(double)) {
+void show_array(const double ar[], int n) {
+    printf("The %d elements are :", n);
     for (int i = 0; i < n; i++) {
-        b[i] = fun(a[i]);
-    }
-}
-
-double addOne(double a) {
-    return a+1.0;
-}
-
-double minusOne(double a) {
-    return a-1.0;
-}
-
-void print(double a[], int n) {
-    for (int i = 0; i < n; i++) {
-        printf("%.2lf ", a[i]);
+        printf("%.2lf", ar[i]);
+        (i != n-1) ? printf(",") : printf(".");
     }
     printf("\n");
+    return;
+}
+
+double * new_d_array(int n, ...) {
+    va_list ap;
+    va_start(ap, n);
+    double *pt;
+    pt = (double *)malloc(n * sizeof(double));
+    for (int i = 0; i < n; i++) {
+        pt[i] = va_arg(ap, double);
+    }
+    va_end(ap);
+    return pt;
 }
