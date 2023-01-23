@@ -1,1 +1,0 @@
-SYUR AFLHt nySyoi.
