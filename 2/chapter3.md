@@ -233,9 +233,9 @@ int main() {
 using namespace std;
 
 int main() {
-    string word;
-    while (cin >> word) {
-        cout << word << endl;
+    string line;
+    while (getline(cin, line)) {
+        cout << line << endl;
     }
     return 0;
 }
@@ -1285,4 +1285,3 @@ int main() {
     return 0;
 }
 ```
-

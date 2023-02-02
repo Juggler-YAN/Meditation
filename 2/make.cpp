@@ -3,8 +3,8 @@
 
 using namespace std;
 
-#define N "3"
-#define NUM 45
+#define N "19"
+#define NUM 26
 
 
 int main() {
@@ -17,8 +17,11 @@ int main() {
         ofs << endl;
         ofs << string("```c++") << endl;
         ofs << endl;
-        ofs << string("```") << endl;
-        ofs << endl;
+        ofs << string("```");
+        if (i != NUM) {
+            ofs << endl;
+            ofs << endl;
+        }
     }
     ofs.close();
     return 0;
