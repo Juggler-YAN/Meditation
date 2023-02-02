@@ -4,10 +4,34 @@
 using namespace std;
 
 int main() {
-    int i; double d; const string *ps; char *pc; void *pv;
-    pv = static_cast<void*>(const_cast<string*>(ps));
-    i = static_cast<int>(*pc);
-    pv = static_cast<void*>(&d);
-    pc = reinterpret_cast<char*>(pv);
+    string s;
+    if (cin >> s) {
+        string item, maxitem;
+        unsigned int cnt = 1,
+                     maxcnt = cnt;
+        while (cin >> item) {
+            if (item == s) {
+                ++cnt;
+            }
+            else {
+                if (cnt > maxcnt) {
+                    maxcnt = cnt;
+                    maxitem = s;
+                }
+                s = item;
+                cnt = 1;
+            }
+        }
+        if (cnt > maxcnt) {
+            maxcnt = cnt;
+            maxitem = s;
+        }
+        if (maxcnt > 1) {
+            cout << maxitem << ":" << maxcnt << endl;
+        }
+        else {
+            cout << "no repeat!!!" << endl;
+        }
+    }
     return 0;
 }
