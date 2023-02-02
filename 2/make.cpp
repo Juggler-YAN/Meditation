@@ -3,8 +3,9 @@
 
 using namespace std;
 
-#define N "2"
-#define NUM 42
+#define N "3"
+#define NUM 45
+
 
 int main() {
     string name = string("chapter") + string(N) + string(".md");

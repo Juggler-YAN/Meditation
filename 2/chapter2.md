@@ -633,6 +633,7 @@ int main() {
 ### Q42
 
 ```c++
+// Sales_data.h
 #ifndef SALES_DATA_H
 #define SALES_DATA_H
 
