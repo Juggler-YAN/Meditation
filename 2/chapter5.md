@@ -2,13 +2,11 @@
 
 ### Q1
 
-只有一个分号的语句
-在程序的某个地方，语法上需要一条语句但是逻辑上不需要，此时应该使用空语句
+只有一个分号的语句。在程序的某个地方，语法上需要一条语句但是逻辑上不需要，此时应该使用空语句
 
 ### Q2
 
-复合语句是指用花括号括起来的语句和声明的序列，复合语句也被称作块。
-如果在程序的某个地方，语法上需要一条语句，但是逻辑上需要多条语句，则应使用复合语句。
+复合语句是指用花括号括起来的语句和声明的序列，复合语句也被称作块。如果在程序的某个地方，语法上需要一条语句，但是逻辑上需要多条语句，则应使用复合语句。
 
 ### Q3
 
@@ -116,8 +114,7 @@ if (ival == 0)
 
 ### Q8
 
-当一个if语句嵌套在另一个if语句内部时，很可能if分支会多于else分支。这时候我们怎么知道某个给定的else是和哪个if匹配呢。这个问题通常称作悬垂else。
-就C++而言，它规定else与离它最近的尚未匹配的if匹配的if匹配，从而消除了程序的二义性。
+当一个if语句嵌套在另一个if语句内部时，很可能if分支会多于else分支。这时候我们怎么知道某个给定的else是和哪个if匹配呢。这个问题通常称作悬垂else。就C++而言，它规定else与离它最近的尚未匹配的if匹配的if匹配，从而消除了程序的二义性。
 
 ### Q9
 
@@ -455,13 +452,43 @@ int main() {
         cout << i << endl;
         i++;
     }
+    return 0;
+}
+```
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main() {
     for (int i = 0; i != 3; i++) {
         cout << i << endl;
     }
+    return 0;
+}
+```
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main() {
     int i;
     while (cin >> i) {
         cout << i << endl;
     }
+    return 0;
+}
+```
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main() {
     for (int i; cin >> i; ) {
         cout << i << endl;
     }
@@ -631,7 +658,7 @@ int main() {
 
 ### Q24
 
-见Q23
+Floating point exception
 
 ### Q25
 

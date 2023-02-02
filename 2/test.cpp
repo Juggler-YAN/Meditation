@@ -1,36 +1,24 @@
 #include <iostream>
-#include <string>
+#include <stdexcept>
 
 using namespace std;
 
 int main() {
-    string s;
-    if (cin >> s) {
-        string item, maxitem;
-        unsigned int cnt = 1,
-                     maxcnt = cnt;
-        while (cin >> item) {
-            if (item == s) {
-                ++cnt;
+    int i1, i2;
+    while (cin >> i1 >> i2) {
+        try {
+            if (i2 == 0) {
+                throw runtime_error("Divisor can't be 0!!!");
             }
-            else {
-                if (cnt > maxcnt) {
-                    maxcnt = cnt;
-                    maxitem = s;
-                }
-                s = item;
-                cnt = 1;
-            }
+            cout << i1/i2 << endl;
         }
-        if (cnt > maxcnt) {
-            maxcnt = cnt;
-            maxitem = s;
-        }
-        if (maxcnt > 1) {
-            cout << maxitem << ":" << maxcnt << endl;
-        }
-        else {
-            cout << "no repeat!!!" << endl;
+        catch (runtime_error err) {
+            cout << err.what() << endl;
+            cout << "Try again? Enter y or n" << endl;
+            char c;
+            cin >> c;
+            if (!cin || c == 'n')
+                break;
         }
     }
     return 0;
