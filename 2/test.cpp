@@ -1,34 +1,23 @@
 #include <iostream>
 #include <vector>
+#include <string>
+
+#include "Screen.h"
+#include "Book.h"
+#include "Person.h"
+#include "Sales_data.h"
+#include "Debug.h"
 
 using namespace std;
 
-int add(int, int);
-int subtract(int, int);
-int multiply(int, int);
-int divide(int, int);
+
+
+// example.C
+#include "example.h"
+double Example::rate = 6.5;
+vector<double> Example::vec(vecSize);
 
 int main() {
-    int a = 1, b = 2;
-    vector<int (*)(int, int)> vf{add, subtract, multiply, divide};
-    for (auto i : vf) {
-        cout << (*i)(a,b) << endl;
-    }
+    Sales_data item = {"9999",36,15.88};
     return 0;
-}
-
-int add(int a, int b) {
-    return a + b;
-}
-
-int subtract(int a, int b) {
-    return a - b;
-}
-
-int multiply(int a, int b) {
-    return a * b;
-}
-
-int divide(int a, int b) {
-    return b != 0 ? a / b : 0;
 }
