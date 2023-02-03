@@ -1,25 +1,34 @@
 #include <iostream>
-#include <stdexcept>
+#include <vector>
 
 using namespace std;
 
+int add(int, int);
+int subtract(int, int);
+int multiply(int, int);
+int divide(int, int);
+
 int main() {
-    int i1, i2;
-    while (cin >> i1 >> i2) {
-        try {
-            if (i2 == 0) {
-                throw runtime_error("Divisor can't be 0!!!");
-            }
-            cout << i1/i2 << endl;
-        }
-        catch (runtime_error err) {
-            cout << err.what() << endl;
-            cout << "Try again? Enter y or n" << endl;
-            char c;
-            cin >> c;
-            if (!cin || c == 'n')
-                break;
-        }
+    int a = 1, b = 2;
+    vector<int (*)(int, int)> vf{add, subtract, multiply, divide};
+    for (auto i : vf) {
+        cout << (*i)(a,b) << endl;
     }
     return 0;
+}
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int subtract(int a, int b) {
+    return a - b;
+}
+
+int multiply(int a, int b) {
+    return a * b;
+}
+
+int divide(int a, int b) {
+    return b != 0 ? a / b : 0;
 }
