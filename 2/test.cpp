@@ -1,23 +1,41 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <vector>
 #include <string>
 
-#include "Screen.h"
-#include "Book.h"
-#include "Person.h"
-#include "Sales_data.h"
-#include "Debug.h"
-
 using namespace std;
 
-
-
-// example.C
-#include "example.h"
-double Example::rate = 6.5;
-vector<double> Example::vec(vecSize);
+struct PersonInfo {
+    string name;
+    vector<string> phones;
+};
 
 int main() {
-    Sales_data item = {"9999",36,15.88};
-    return 0;
+	string line, word;
+	vector<PersonInfo> people;
+	istringstream record;
+    ifstream in("./test.txt");
+
+	while(getline(in, line)) {
+		record.str(line);
+		PersonInfo info;
+		record >> info.name;
+		while(record >> word)
+			info.phones.push_back(word);
+		record.clear();
+		people.push_back(info);
+	}
+
+	for(const auto &person : people) {
+		cout << person.name << "  ";
+		for(const auto &ph : person.phones) {
+			cout << ph << " ";
+		}
+		cout << endl;
+	}
+
+	in.close();
+
+	return 0;
 }
