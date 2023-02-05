@@ -139,9 +139,9 @@ double print_total(std::ostream &os, const Quote &item, size_t n) {
 }
 
 #endif
+```
 
-
-
+```c++
 // Bulk_quote.h
 #ifndef BULK_QUOTE_H
 #define BULK_QUOTE_H
@@ -217,9 +217,9 @@ double print_total(std::ostream &os, const Quote &item, size_t n) {
 }
 
 #endif
+```
 
-
-
+```c++
 // Few_quote.h
 #ifndef FEW_QUOTE_H
 #define FEW_QUOTE_H
@@ -519,9 +519,9 @@ void Quote::debug() const {
 }
 
 #endif
+```
 
-
-
+```c++
 // Disc_quote.h
 #ifndef DISC_QUOTE_H
 #define DISC_QUOTE_H
@@ -1234,9 +1234,9 @@ void Quote::debug() const {
 }
 
 #endif
+```
 
-
-
+```c++
 // Disc_quote.h
 #ifndef DISC_QUOTE_H
 #define DISC_QUOTE_H
